@@ -1,12 +1,9 @@
-<header class="site-header">
-
-    <div class="hero-image" style="background-image: url({% if page.hero %}{{ page.hero | relative_url }}{% else %}{{ site.data.site.hero | relative_url }}{% endif %})");
->
-  <div class="wrapper">
-
-    {% include banner.html %}
-    {% include nav-bar.html %}
+<header class="site-header fixed top-0 left-0 w-full z-50">
+  <div class="hero-image h-[150px] bg-center bg-no-repeat bg-cover relative"
+       style="background-image: url({% if page.hero %}{{ page.hero | relative_url }}{% else %}{{ site.data.site.hero | relative_url }}{% endif %})">
+    <div class="container mx-auto px-4 lg:px-8">
+      {% include banner.html %}
+      {% include nav-bar.html %}
     </div>
   </div>
-
 </header>
