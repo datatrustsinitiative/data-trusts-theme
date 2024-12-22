@@ -1,0 +1,19 @@
+{% include extractname.html entry=include.entry %}
+<div class="card person-card">
+  <div class="person-image">
+    <img src="{%if include.entry.image contains 'http'%}{{include.entry.image}}{%else%}{{site.data.images.directory | relative_url }}/{%if include.entry.image and include.entry.image != "" %}{{include.entry.image}}{% else %}{{site.data.images.person_placeholder}}{%endif%}{%endif%}" alt="Image of {{include.entry.title}}">
+  </div>
+  <a href="{{ include.entry.url }}">
+  <div class="person-info">
+    <h3>{{ name }}</h3>
+    {% if include.entry.position %}
+    <p>{{ include.entry.position }}{% if include.entry.institution %}{% if include.entry.institution%}, {{ include.entry.institution }}{% endif %}{%endif%}</p>
+    {% else %}
+    {% if include.entry.institution %}
+    <p>{{ include.entry.institution }}</p>
+    {% endif %}
+    {% endif %}
+    <div class="learn-more">Read more</div>
+  </div>
+  </a>
+</div>
