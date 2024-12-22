@@ -1,0 +1,12 @@
+<div class="banner">
+  <a href="{{ '/' | relative_url }}">
+    <img src="{{ site.data.site.logo | relative_url }}" alt="Logo" width="200">
+  </a>
+  {% if site.banner or page.banner %}
+    <div class="header-image-wrap">
+      <div class="inner-wrap">
+        <img src="{% if page.banner %}{{ page.banner | prepend: site.data.images.directory | relative_url }}{% else %}{{ site.banner | prepend: site.data.images.directory | relative_url }}{% endif %}" class="header-image" width="1280" height="290" alt="{{ site.title }}">
+      </div>
+    </div>
+  {% endif %}
+</div>
