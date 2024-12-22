@@ -1,0 +1,11 @@
+sass:
+  style: compressed
+  sass_dir: _sass
+  
+# Add to your existing excludes
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
