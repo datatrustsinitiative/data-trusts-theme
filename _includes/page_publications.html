@@ -1,0 +1,23 @@
+{% if include.publications != nil %}
+{% assign people_size = include.publications | size %}
+{% if publications_size != 0 %}
+<section class="block block__publications">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Related Publications</h2>
+      <span></span>
+    </div>
+    <div class="publications__list">
+      {% for publication_slug in include.publications %}
+      {% for publication in site.publications %}
+      {% if publication.slug == publication_slug %}
+      {% include listpaper.html entry=publication %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endif %}
+
