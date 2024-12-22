@@ -1,0 +1,12 @@
+<div class="card project-card">
+  <div class="project-image">
+    <img src="{{site.data.images.directory | relative_url }}/{{include.entry.featured_image}}" alt="Image of {{include.entry.title}}">
+  </div>
+  <a href="{{ include.entry.url }}">
+    <div class="project-info">
+      <h3>{{ include.entry.title }}</h3>
+      <p>{{ include.entry.short_overview }}</p>
+      <div class="learn-more">Learn more</div>
+    </div>
+  </a>
+</div>
