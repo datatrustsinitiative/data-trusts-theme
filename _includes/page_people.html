@@ -1,0 +1,14 @@
+{% assign people_size = include.people | size %}
+{% if people_size > 0 %}
+
+<h2>Related People</h2>
+
+{% for person_slug in include.people %}
+{% for person in site.people %}
+{% if person.slug == person_slug %}
+{% include listperson-card.html entry=person %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
