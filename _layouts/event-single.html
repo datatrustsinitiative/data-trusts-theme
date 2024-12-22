@@ -1,0 +1,19 @@
+---
+layout: page
+---
+
+<img src="{{ page.featured_image | relative_url}}">
+
+<h2>Overview</h2>
+
+{{ page.excerpt | markdownify }}
+
+{% if page.youtube %}
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/{{ page.youtube }}" allowfullscreen></iframe>
+  </div>
+{% endif %}
+  
+{% include page_people.html people=page.people %}
+{% include page_publications.html people=page.publications %}
+
