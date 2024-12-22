@@ -1,3 +1,156 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Card Components */
+  .person-card {
+    @apply relative flex mb-5 p-4 rounded bg-light-lightest transition-transform duration-200;
+  }
+  
+  .person-card:hover {
+    @apply transform -translate-y-2 shadow-lg;
+  }
+
+  .person-image {
+    @apply rounded-full w-24 h-24 overflow-hidden mr-4 my-2;
+  }
+
+  .project-card {
+    @apply relative mb-5 p-4 rounded bg-light-lightest transition-transform duration-200;
+  }
+
+  .project-card:hover {
+    @apply transform -translate-y-2 shadow-lg;
+  }
+
+  /* Grid Layouts */
+  .grid-container {
+    @apply container mx-auto px-4;
+  }
+
+  .project-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    @apply h-hero-mobile md:h-hero-tablet lg:h-hero-desktop bg-primary-blue relative flex justify-center items-center;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-black opacity-20;
+  }
+
+  .hero-content {
+    @apply relative z-10 text-light-lightest;
+  }
+
+  /* Navigation */
+  .nav-primary {
+    @apply w-full relative flex justify-between opacity-0 invisible z-[-1] transition-all duration-300;
+  }
+
+  .nav-primary.active {
+    @apply opacity-100 visible z-10;
+  }
+
+  /* Research Block */
+  .research-block {
+    @apply py-8 lg:py-16;
+  }
+
+  .research-item {
+    @apply mb-8 p-8 flex justify-between flex-wrap bg-light-lightest;
+  }
+
+  .research-details {
+    @apply w-full max-w-lg flex flex-col justify-between items-start order-2 md:w-1/2 md:order-none;
+  }
+
+  /* Logo Grid */
+  .logo-grid {
+    @apply p-8 -m-4 flex justify-center flex-wrap bg-light-lightest;
+  }
+
+  .logo-item {
+    @apply w-1/2 md:w-1/3 lg:w-1/5 p-4 flex justify-center items-center;
+  }
+
+  /* Contact Block */
+  .contact-block {
+    @apply my-8 lg:my-16;
+  }
+
+  .contact-details {
+    @apply p-8 flex justify-between flex-wrap bg-light-lightest;
+  }
+
+  /* Team Profile */
+  .team-profile {
+    @apply py-8 lg:py-16;
+  }
+
+  .team-biography {
+    @apply p-8 bg-light-lightest;
+  }
+
+  /* Media Text Block */
+  .media-text-block {
+    @apply my-8 lg:my-16;
+  }
+
+  .media-text-content {
+    @apply w-full mb-8 md:w-1/2 lg:max-w-lg;
+  }
+
+  /* Section Headings */
+  .section-heading {
+    @apply mb-6 md:mb-10 flex flex-col items-start;
+  }
+
+  .section-heading h1,
+  .section-heading h2,
+  .section-heading h3,
+  .section-heading h4,
+  .section-heading h5,
+  .section-heading h6 {
+    @apply w-auto mb-0 pb-2 md:pb-4 relative font-header-alt text-base md:text-xl font-normal leading-relaxed uppercase;
+  }
+
+  /* Buttons */
+  .button {
+    @apply px-8 py-3 relative inline-block text-lg leading-normal text-orange no-underline cursor-pointer;
+  }
+
+  .button-white {
+    @apply text-light-lightest;
+  }
+
+  /* Layout Helpers */
+  .container-wide {
+    @apply w-11/12 max-w-[1680px] mx-auto;
+  }
+
+  .container-narrow {
+    @apply w-11/12 max-w-[1160px] mx-auto;
+  }
+
+  .container-thin {
+    @apply w-11/12 max-w-[1120px] mx-auto;
+  }
+}
+
+@layer utilities {
+  .header-height {
+    height: theme('height.header');
+  }
+
+  .hero-height {
+    min-height: theme('height.hero-desktop');
+  }
+
+  .transition-custom {
+    transition-timing-function: theme('transitionTimingFunction.custom');
+  }
+}
