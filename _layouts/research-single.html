@@ -1,0 +1,22 @@
+---
+layout: page
+---
+<img src="{{site.data.images.directory | relative_url }}/{{ page.featured_image }}">
+
+<h2>Overview</h2>
+
+<div class="research-overview__short">
+  {{ page.overview_short | markdownify }}
+</div>
+<div class="research-overview__long">
+  {{ page.overview_long | markdownify }}
+</div>
+<div class="research-overview__short-expand">
+  <!-- SVGS into buttons -->
+  <button class="expand-summary">Expand Summary</button>
+  <button class="minimise-summary">Minimise Summary</button>
+</div>
+
+{% include page_people.html people=page.people %}
+{% include page_publications.html people=page.publications %}
+

@@ -1,0 +1,48 @@
+---
+layout: page
+---
+
+<img src="{{site.data.images.directory | relative_url }}/{{ page.featured_image }}">
+
+<h1>{{ page.title }}</h1>
+
+{% if page.short_overview %}
+<h2>Overview</h2>
+{{ page.short_overview | markdownify }}
+{% endif %}
+
+{% if page.about %}
+<h2>About</h2>
+{{page.about | markdownify }}
+{% endif %}
+
+{% if page.aims_objectives %}
+<h2>Aims & Objectives</h2>
+{{page.aims_objectives | markdownify }}
+{%endif%}
+
+{% include page_people.html people=page.people %}
+{% include page_publications.html publications=page.publications %}
+
+<section class="block block__pagination">
+  <div class="container row row--justified">
+    {% if page.previous.url %}
+    <a href="{{page.previous.url}}">
+      <div>
+        <h4>Previous Project:</h4>
+        <p>{{page.previous.title}}</p>
+      </div>
+    </a>
+    {% else %}
+    {% endif %}
+    {% if page.next.url %}
+    <a href="{{page.next.url}}">
+      <div>
+        <h4>Next Project:</h4>
+        <p>{{page.next.title}}</p>
+      </div>
+    </a>
+    {% else %}
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,125 @@
+---
+layout: page
+---
+
+<div class="person-page">
+  <div class="person-image">
+    <img src="{{site.data.images.directory | relative_url }}/{%if page.image and page.image != "" %}{{page.image}}{% else %}{{site.data.images.person_placeholder}}{%endif%}" alt="Image of {{page.title}}">
+  </div>
+  <div class="person-header">
+    <div class="person-links">
+      {% if page.linkedin %}
+      <a href="{{ page.linkedin }}"><i class="fab fa-linkedin fa-lg"></i></a>
+      {% endif %}
+      {% if page.twitter %}
+      <a href="{{ page.twitter }}"><i class="fab fa-twitter fa-lg"></i></a>
+      {% endif %}
+      {% if page.github %}
+      <a href="{{ page.github }}"><i class="fab fa-github fa-lg"></i></a>
+      {% endif %}
+      {% if page.facebook %}
+      <a href="{{ page.facebook }}"><i class="fab fa-facebook fa-lg"></i></a>
+      {% endif %}
+      {% if page.website %}
+      <a href="{{ page.website }}"><i class="fas fa-globe fa-lg"></i></a>
+      {% endif %}
+     {% if page.email %}
+      <a href="mailto:{{ page.email }}"><i class="far fa-envelope fa-lg"></i></a>
+      {% endif %}
+      {% if site.ghub.edit %}
+      {% include links/edit-link.html %}
+      {% endif %}
+      
+    </div>
+  </div>
+  <div class="person-bio">
+    <h2>{{ page.title }}</h2>
+    {{ page.biography | markdownify }}
+  </div>
+  <div class="person-publications">
+    {% assign person_slug = page.slug %}
+    {% assign publications_by_person = "" | split: "" %}
+    
+    {% for publication in site.publications %}
+    {% for author in publication.author %}
+    {% if author.person_page == person_slug %}
+    {% assign publications_by_person = publications_by_person | push: publication %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    
+    {% assign num_pubs = publications_by_person | size %}
+    {% if num_pubs >0 %}
+    <h2>Publications</h2>
+    {% for item in publications_by_person %}
+    {% include listpaper.html entry=item %}
+    {% endfor %}
+    {%endif%}
+  </div>
+  <div class="person-projects">
+    {% assign person_slug = page.slug %}
+    {% assign posts_by_person = "" | split: "" %}
+    
+    {% for post in site.posts %}
+    {% for author in post.author %}
+    {% if author.person_page == person_slug %}
+    {% assign posts_by_person = posts_by_person | push: post %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% assign num_posts = posts_by_person | size %}
+    {% if num_posts >0  %}
+    
+    <h2>Posts</h2>
+    <div class="project-list">
+      {% assign num_pubs = posts_by_person | size %}
+      {% if num_pubs >0 %}
+      {% for item in posts_by_person %}
+      {% include listblog.html entry=item %}
+      {% endfor %}
+      {%endif%}
+    </div>
+    {% endif %}
+  </div>
+  <div class="person-projects">
+    {% assign projects_by_person = "" | split: "" %}
+    
+    {% for project in site.projects %}
+    {% for person in project.people %}
+    {% if person == person_slug %}
+    {% assign projects_by_person = projects_by_person | push: project %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    
+    {% assign num_projects = projects_by_person | size %}
+
+    {% assign research_by_person = "" | split: "" %}
+  
+    {% for project in site.research %}
+    {% for person in project.people %}
+    {% if person == person_slug %}
+    {% assign research_by_person = research_by_person | push: project %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+        
+    {% assign num_research = research_by_person | size %}
+
+    {% if num_projects >0 or num_research >0 %}
+    <h2>Projects</h2>
+    <div class="project-list">
+      {% for item in projects_by_person %}
+      {% include listproject.html entry=item %}
+      {% endfor %}
+      {% for item in research_by_person %}
+      {% include listresearch.html entry=item %}
+      {% endfor %}
+    </div>
+    {%endif%}
+  </div>
+</div>
+
+
+  
+  
